@@ -1,9 +1,9 @@
 /demo1/
 /example/
-/.gradle/
-/.idea/
-/gradle/
-/build/
-*.iml
-gredlew*
+/*/.gradle/
+/*/.idea/
+/*/gradle/
+/*/build/
+/*/*.iml
+/*/gradlew*
 
