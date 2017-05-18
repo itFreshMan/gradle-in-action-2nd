@@ -1,19 +1,55 @@
-setDescription("desc1")
-project.description='descdesc2'
-description='descdesc3'
-println "desc project $name"+project.description
+//version = new ProjectVersion(0,1);
 
-project.ext.myProp ='myValue'
-ext{
-  someOtherProp=123
+class ProjectVersion{
+	Integer major
+	Integer minor
+	Boolean release
+	
+	ProjectVersion(Integer major,Integer minor){
+		this.major = major;
+		this.minor = minor;
+		this.release = Boolean.FALSE
+	}
+	
+	ProjectVersion(Integer major,Integer minor,Boolean release){
+		this(major,minor)
+		this.release = release
+	}
+	
+	@Override
+	String toString(){
+		"$major.$minor${release?'':'-SNAPSHOT'}"
+	}
 }
 
-println "myProp $myProp"
-println "someOtherProp $someOtherProp"
 
-ext.someOtherProp = 456;
-println "someOtherProp $someOtherProp"
+task printVersion <<{
+	println "$version"
+}
 
-println "author $author"
-println "address $address"
-println "sex $sex"
+//ext.versionFile = file('version.properties')
+
+//task 没有使用<< ,表示为task配置,会在所有的任务执行前执行;
+task loadVersion {
+	project.version = readVersion()
+}
+
+ProjectVersion readVersion(){
+	logger.quiet 'read the version file'
+	
+	def versionFile = file('version.properties')
+	
+	if(!versionFile.exists()){
+		throw new GradleException("versionFile is not exist:$versionFile.absolutePath")
+	}
+	Properties properties = new Properties()
+	versionFile.withInputStream{stream ->
+		properties.load(stream)
+	}
+	println 'loadFile ' +properties.major.toInteger() +':'+properties.minor.toInteger()+':'+properties.release.toBoolean()
+	new ProjectVersion(properties.major.toInteger(),properties.minor.toInteger(),properties.release.toBoolean())
+}
+
+
+
+

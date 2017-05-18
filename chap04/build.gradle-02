@@ -1,0 +1,21 @@
+version='0.1-SNAPSHOT'
+
+//task内置属性:group,description,在使用命令gradle tasks 会看到该任务的任务分组(group)以及任务描述(description)
+task printVersion(group:'task-group-1',description:'task-description-1') {
+	doLast{
+		println 'doLast'
+	}
+
+	doFirst{
+		println 'doFirst'
+	}
+	
+	println "default Version :$version" //default 最先执行 
+}
+
+printVersion.doFirst { println 'doFirst2'} //doFirst '先入后出' :
+
+printVersion << { println 'doLast2'} //doLast '先入先出' 
+
+//打印结果 default > first[length-1] > first...[0] > last[0] > last....[length-1]
+

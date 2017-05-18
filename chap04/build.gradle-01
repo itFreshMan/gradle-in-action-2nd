@@ -1,0 +1,19 @@
+setDescription("desc1")
+project.description='descdesc2'
+description='descdesc3'
+println "desc project $name"+project.description
+
+project.ext.myProp ='myValue'
+ext{
+  someOtherProp=123
+}
+
+println "myProp $myProp"
+println "someOtherProp $someOtherProp"
+
+ext.someOtherProp = 456;
+println "someOtherProp $someOtherProp"
+
+println "author $author"
+println "address $address"
+println "sex $sex"
