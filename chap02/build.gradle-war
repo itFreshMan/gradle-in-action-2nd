@@ -20,6 +20,10 @@ dependencies{
     testCompile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
+/**
+	gradle jettyRun
+	gradle jettyStop
+**/
 jettyRun{
     httpPort= 9080 //注意端口号必须为数字,不能用引号
     contextPath='todo'
