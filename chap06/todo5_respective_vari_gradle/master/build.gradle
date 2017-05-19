@@ -1,0 +1,9 @@
+allprojects{
+	group = 'com.manning.gia'
+	version = project.version //使用gradle.properties中的配置项
+}
+
+subprojects{
+	apply plugin : 'java'
+}
+

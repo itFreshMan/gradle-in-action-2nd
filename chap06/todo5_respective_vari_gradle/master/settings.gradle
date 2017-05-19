@@ -1,0 +1,7 @@
+includeFlat 'todo-model'
+includeFlat 'todo-repository','todo-web'
+rootProject.name = 'todo'
+
+rootProject.children.each{
+	it.buildFileName = it.name +'.gradle' - 'todo-' //ÏîÄ¿Ãû³Æ+'.gradle' -'todo-'
+}
