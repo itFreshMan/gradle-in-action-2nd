@@ -1,0 +1,40 @@
+allprojects{
+	group = 'com.manning.gia'
+	version = project.version //使用gradle.properties中的配置项
+}
+
+subprojects{
+	apply plugin : 'java'
+}
+
+//project(':model'){}
+
+project(':repository'){
+	dependencies{
+		compile project(':model')
+	}
+}
+
+
+project(':web'){
+	apply plugin : 'war'
+	apply plugin : 'jetty'
+	webAppDirName = 'webfiles' //改变webRoot根路径 ，默认路径：/src/main/webapp
+
+	repositories{
+    mavenLocal()
+    mavenCentral()
+	}
+	
+	dependencies{
+		  compile project(':repository')
+	    providedCompile 'javax.servlet:servlet-api:2.5'
+	    runtime 'javax.servlet:jstl:1.1.2'
+	}
+	
+	jettyRun{
+    httpPort= 9080 //注意端口号必须为数字,不能用引号
+    contextPath='todoMaster'
+	} 
+
+}
