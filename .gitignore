@@ -1,9 +1,11 @@
 /demo1/
 /example/
-/*/.gradle/
-/*/.idea/
-/*/gradle/
-/*/build/
-/*/*.iml
-/*/gradlew*
+/**/.gradle/
+/**/.idea/
+/**/gradle/
+/**/build/
+/**/*.iml
+/**/.class
+/**/gradlew*
+
 
