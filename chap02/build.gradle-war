@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'jetty'
 
-webAppDirName = 'webfiles' //改变webRoot根路径
+webAppDirName = 'webfiles' //改变webRoot根路径 ,默认路径：/src/main/webapp
 
 war{
     from 'static'  //将static目录添加到webRoot下
