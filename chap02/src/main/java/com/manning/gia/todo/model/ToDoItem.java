@@ -1,7 +1,5 @@
 package com.manning.gia.todo.model;
 
-import com.manning.gia.todo.repository.ToDoRepository;
-
 /**
  * @author jhs
  * @create 2017-05-16 14:52
@@ -10,6 +8,7 @@ public class ToDoItem implements Comparable<ToDoItem> {
     private Long id;
     private String name;
     private boolean completed;
+
 
     public Long getId() {
         return id;
