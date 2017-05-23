@@ -14,11 +14,19 @@ jar{
 
 sourceSets{
     main{
+ 				/**
+           仅仅包含.java文件,
+           如果mybatis中mapper.xml文件会丢失,需要在sourceSets.main.resources.srcDirs添加['src/main/java']
+        **/
         java{
-//            srcDir 'src/main/java'
+//          srcDir 'src/main/java'
             srcDirs=['src/main/java']
             excludes=['com/manning/gia/todo/web']
         }
+        
+       /**
+           非java文件,
+        **/
         resources{
             srcDirs=['src/main/resources']
         }
